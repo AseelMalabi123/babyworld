@@ -68,8 +68,7 @@
    <input type="password" required="required" id="password" 
     class="form-control" >
    <label class="form-label">Password</label>
-   <button class="btn" onclick="postApi()"> Sign up </button>
-
+   <button class="btn" type ="button" onclick="postApi();" id="inb" > Sign up </button>
  </div>
 </form>
 
@@ -82,10 +81,10 @@
       <script>
 	function postApi(val){
 	var model = {
-	"fname": this.$("#fname").val(),
-	"lname": this.$("#lname").val(),
-	"email" : this.$("#email").val(),
-	"password" : this.$("#password").val()
+	"fname": $("#fname").val(),
+	"lname": $("#lname").val(),
+	"email" : $("#email").val(),
+	"password" : $("#password").val()
 	};
 	console.log("post data:"+model);
 		$.ajax(
@@ -96,7 +95,7 @@
 			ContentType:"application/json ;charset=UTF-8",
 			
 			crossOrigin:true,
-			dataType:"json",
+			dataType:"JSON",
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json'
@@ -107,7 +106,7 @@
 			{
 				//console.log("successfuly"+data);
 				alert("done");
-				location.href="HomePage.html";
+				top.location.href="HomePage.html";
 			},error:function(jqXHR,testStatus,errorThrown)
 			{
 				alert("error");
@@ -116,7 +115,7 @@
 		);
 	}
 	</script>
-	<script type="text/javascript">
+	<!-- --<script type="text/javascript">
 	$(document).ready(function(){
 	$.ajax(
 			{
@@ -160,13 +159,12 @@
 	});
 	
 </script>
-<script>
+<script-->
 function removeUser(id){
          
          $.ajax({
                 url: "admin/deleteUser/id?id="+id,
                 method:'DELETE',
-                dataType:'json',
                 success:function(data){
                     alert("the user  number "+id+" is  deleted");
                     
@@ -179,9 +177,9 @@ function removeUser(id){
 </script>
 
   <script type="text/javascript">
-    document.getElementById("myButton").onclick = function () {
-        location.href = "signUp.html";
-    };
+  $(document).on('click','#subm', function () {
+      location.href = "signUp.html";
+  });
     </script>
 
      <script>

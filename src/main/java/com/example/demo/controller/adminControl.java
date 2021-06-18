@@ -55,9 +55,10 @@ public class adminControl {
 			return "hi";
 		}
 
-	
-		@PostMapping("admin/login/{email}/{password")
-		public user login(@PathVariable(name="email") String email , @PathVariable String password)
+		
+		
+		@PostMapping("admin/login/{email}/{password}")
+		public user login(@PathVariable(name="email") String email , @PathVariable(name="password") String password)
 		{
 			return uDao.loginUser(email, password);
 		}
